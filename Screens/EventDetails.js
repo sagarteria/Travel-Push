@@ -1,9 +1,19 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, Linking } from 'react-native';
+import { WebView } from 'react-native-webview';
 
 const EventDetailsScreen = () => {
+  const [showWebView, setShowWebView] = useState(false);
+
+  const handlePayNow = () => {
+    setShowWebView(true);
+  };
   return (
     <ScrollView contentContainerStyle={styles.container}>
+    {showWebView ? (
+        <WebView source={{ uri: 'https://paytm.me/1FJ-TUq' }} style={styles.webView} />
+      ) : (
+        <>
       <Text style={styles.title}>Retreat Details</Text>
       <Image
         source={require('../assets/Retreat-Osho-Anandamaya.jpg')} // Replace with the actual image path
@@ -44,10 +54,12 @@ const EventDetailsScreen = () => {
             Osho Anandamaya - Freedom Demystified Retreat. There is no greater ecstasy than to know who you are
           </Text>
         </View>
-        <TouchableOpacity style={styles.payNowButton}>
+        <TouchableOpacity style={styles.payNowButton} onPress={handlePayNow}>
           <Text style={styles.payNowButtonText}>Pay Now</Text>
         </TouchableOpacity>
       </View>
+      </>
+      )}
     </ScrollView>
   );
 };
@@ -115,6 +127,13 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  webView: {
+    flex: 1,
+    height: 300, // Adjust the height as needed
+    marginTop: 20,
+    borderRadius: 8,
+    overflow: 'hidden', // Hide any overflow content
   },
 });
 
