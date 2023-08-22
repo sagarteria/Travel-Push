@@ -2,7 +2,7 @@
   "expo": {
     "name": "travel-push",
     "slug": "snack-80a32f7f-4948-4413-9f77-54e3217bb434",
-    "version": "1.0.0",
+    "version": "1.0.4",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
