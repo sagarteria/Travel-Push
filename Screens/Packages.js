@@ -2,8 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
 
 export default function Packages({ navigation }) {
-  const handleButtonPress = (eventData) => {
-    console.log('eventData', eventData)
+  const handleButtonPress = () => {
     navigation.navigate('EventDetails');
   };
   
