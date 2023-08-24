@@ -6,6 +6,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from './Screens/Login'; // Import your LoginScreen component
 import MainAppNavigator from './Screens/MainAppNavigator'; // Import your MainAppNavigator component
 
+// android SHA-1 google: 902BA1A575DBD9795A313603FA8E585AFAD876D7
+// android oauth client id google: 917856360906-roaddemnd0fn03vhn467uq12ei2bt01e.apps.googleusercontent.com
+// web: 917856360906-e4sgjeav3iiftdjae4db0ctpueres5ec.apps.googleusercontent.com
+// ios: 917856360906-e4e8omhl85kbq1mikc23o6l9uqu0n7n1.apps.googleusercontent.com
 const Stack = createStackNavigator();
 
 const App = () => {

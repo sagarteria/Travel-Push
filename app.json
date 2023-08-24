@@ -18,7 +18,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sagarteria.travelpush1"
     },
     "android": {
       "adaptiveIcon": {
@@ -30,6 +31,7 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "scheme": "travel-push",
     "extra": {
       "eas": {
         "projectId": "59697d9b-73d2-4e8e-bc0d-5ebe5276a2a4"
