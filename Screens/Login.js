@@ -10,7 +10,7 @@ const LoginPage = ({navigation}) => {
     <View style={styles.container}>
       <View style={styles.logoContainer}>
         <Image
-          source={require('../assets/logo.jpg')}
+          source={require('../assets/logo-24-August-2023-v2.png')}
           style={styles.logoImage}
           resizeMode="contain"
         />

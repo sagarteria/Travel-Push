@@ -12,7 +12,7 @@ const Stack = createStackNavigator();
 const CustomHeader = () => (
     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
       <Image
-        source={require('../assets/logo.jpg')}
+        source={require('../assets/logo-24-August-2023-v2.png')}
         style={{ width: 40, height: 40, marginLeft: 95 }}
       />
       <Text style={{ marginLeft: 10 }}>Travel Push</Text>
