@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "travel-push",
+    "name": "Travel Push",
     "slug": "snack-80a32f7f-4948-4413-9f77-54e3217bb434",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logo-24-August-2023-v2.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/logo-24-August-2023-v2.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,7 +22,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/logo-24-August-2023-v2.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.sagarteria.travelpush1"
