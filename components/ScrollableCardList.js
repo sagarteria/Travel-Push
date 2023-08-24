@@ -9,7 +9,6 @@ const ScrollableCardList = ({navigation}) => {
   const scaleValue = useRef(new Animated.Value(1)).current; // Initialize the scale animation value
 
   const handleButtonPress = (eventData) => {
-    console.log('eventData', eventData)
     navigation.navigate('EventDetails');
     // Define the animation sequence
     // Animated.sequence([
