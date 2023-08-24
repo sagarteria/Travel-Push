@@ -18,11 +18,10 @@ const EventDetailsScreen = () => {
         <WebView source={{ uri: 'https://paytm.me/1FJ-TUq' }} style={styles.webView} />
       ) : (
         <>
-      <Text style={styles.title}>Retreat Details</Text>
       <Image
         source={imageUrl} // Replace with the actual image path
         style={styles.eventImage}
-        resizeMode="cover"
+        resizeMode="stretch"
       />
       <View style={styles.detailsContainer}>
         <View style={styles.detailRow}>
@@ -71,19 +70,19 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     backgroundColor: '#f7f7f7',
-    padding: 20,
+    padding: 8,
   },
   title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    marginBottom: 20,
+    fontSize: 22,
+    // fontWeight: 'bold',
+    marginBottom: 10,
     color: '#800000', // Maroon color
   },
   eventImage: {
     width: '100%',
-    height: 200,
+    height: 325,
     borderRadius: 8,
-    marginBottom: 20,
+    marginBottom: 10,
   },
   detailsContainer: {
     backgroundColor: '#fff',
@@ -94,7 +93,7 @@ const styles = StyleSheet.create({
   detailRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 12, // Reduced marginBottom for better spacing
+    marginBottom: 4, // Reduced marginBottom for better spacing
   },
   detailTitle: {
     fontSize: 16, // Reduced font size for field labels
