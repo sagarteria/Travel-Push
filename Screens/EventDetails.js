@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, Linking } from 'react-native';
 import { WebView } from 'react-native-webview';
+import { useNavigation, useRoute } from '@react-navigation/native'; // Import the useNavigation hook
 
 const EventDetailsScreen = () => {
+  const navigation = useNavigation(); // Get the navigation object using the hook
+  const route = useRoute(); // Get the route object using the hook
+  const { title, content, startDate, endDate, entryFee, location, description, imageUrl, upcomingEvent } = route.params; // Extract the passed data
   const [showWebView, setShowWebView] = useState(false);
 
   const handlePayNow = () => {
@@ -14,49 +18,49 @@ const EventDetailsScreen = () => {
         <WebView source={{ uri: 'https://paytm.me/1FJ-TUq' }} style={styles.webView} />
       ) : (
         <>
-      <Text style={styles.title}>Retreat Details</Text>
       <Image
-        source={require('../assets/Retreat-Osho-Anandamaya.jpg')} // Replace with the actual image path
+        source={imageUrl} // Replace with the actual image path
         style={styles.eventImage}
-        resizeMode="cover"
+        resizeMode="stretch"
       />
       <View style={styles.detailsContainer}>
         <View style={styles.detailRow}>
           <Text style={styles.detailTitle}>Start</Text>
           <View style={styles.detailValueContainer}>
-            <Text style={styles.detailValue}>Aug 12, 2023, 11:00 AM</Text>
+            <Text style={styles.detailValue}>{startDate}</Text>
           </View>
         </View>
         <View style={styles.detailRow}>
           <Text style={styles.detailTitle}>Ends</Text>
           <View style={styles.detailValueContainer}>
-            <Text style={styles.detailValue}>Aug 15, 2023, 12:00 PM</Text>
+            <Text style={styles.detailValue}>{endDate}</Text>
           </View>
         </View>
         <View style={styles.detailRow}>
           <Text style={styles.detailTitle}>Entry Fee</Text>
           <View style={styles.detailValueContainer}>
-            <Text style={styles.detailValue}>Rs. 10000</Text>
+            <Text style={styles.detailValue}>{entryFee}</Text>
           </View>
         </View>
         <View style={styles.detailRow}>
           <Text style={styles.detailTitle}>Location</Text>
           <View style={styles.detailValueContainer}>
             <Text numberOfLines={2} style={styles.locationValue}>
-              Jungle Lore Ganga Beach Retreat,
-              Rishikesh
+              {location}
             </Text>
           </View>
         </View>
         <View style={styles.detailItem}>
           <Text style={styles.detailTitle}>Description</Text>
           <Text style={styles.descriptionValue}>
-            Osho Anandamaya - Freedom Demystified Retreat. There is no greater ecstasy than to know who you are
+            {description}
           </Text>
         </View>
-        <TouchableOpacity style={styles.payNowButton} onPress={handlePayNow}>
-          <Text style={styles.payNowButtonText}>Pay Now</Text>
-        </TouchableOpacity>
+        {upcomingEvent && (
+          <TouchableOpacity style={styles.payNowButton} onPress={handlePayNow}>
+            <Text style={styles.payNowButtonText}>Pay Now</Text>
+          </TouchableOpacity>
+        )}
       </View>
       </>
       )}
@@ -68,19 +72,19 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     backgroundColor: '#f7f7f7',
-    padding: 20,
+    padding: 8,
   },
   title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    marginBottom: 20,
+    fontSize: 22,
+    // fontWeight: 'bold',
+    marginBottom: 10,
     color: '#800000', // Maroon color
   },
   eventImage: {
     width: '100%',
-    height: 200,
+    height: 348,
     borderRadius: 8,
-    marginBottom: 20,
+    marginBottom: 10,
   },
   detailsContainer: {
     backgroundColor: '#fff',
@@ -91,7 +95,7 @@ const styles = StyleSheet.create({
   detailRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 12, // Reduced marginBottom for better spacing
+    marginBottom: 4, // Reduced marginBottom for better spacing
   },
   detailTitle: {
     fontSize: 16, // Reduced font size for field labels
