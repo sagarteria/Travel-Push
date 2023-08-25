@@ -16,6 +16,7 @@ const ScrollableCardList = ({navigation}) => {
       location: eventData.location,
       description: eventData.description,
       imageUrl: eventData.imageUrl,
+      upcomingEvent: eventData.upcomingEvent,
     });
     // Define the animation sequence
     // Animated.sequence([
@@ -58,7 +59,7 @@ const ScrollableCardList = ({navigation}) => {
       startDate: 'Sept 15, 2023, 4:00 PM',
       endDate: 'Sept 16, 2023, 11:00 PM',
       entryFee: 'Rs. 6000',
-      location: "Gypsy Cafe, Rishikesh",
+      location: "Gipsy Cafe, Rishikesh",
       imageUrl: require('../assets/Festival-World-Music-Festival.jpg'),
       description: "One of the biggest music festival about to happen in Rishikesh",
       url: 'eventDetails',
