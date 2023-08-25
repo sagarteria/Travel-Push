@@ -6,7 +6,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'; // Import th
 const EventDetailsScreen = () => {
   const navigation = useNavigation(); // Get the navigation object using the hook
   const route = useRoute(); // Get the route object using the hook
-  const { title, content, startDate, endDate, entryFee, location, description, imageUrl } = route.params; // Extract the passed data
+  const { title, content, startDate, endDate, entryFee, location, description, imageUrl, upcomingEvent } = route.params; // Extract the passed data
   const [showWebView, setShowWebView] = useState(false);
 
   const handlePayNow = () => {
@@ -56,9 +56,11 @@ const EventDetailsScreen = () => {
             {description}
           </Text>
         </View>
-        <TouchableOpacity style={styles.payNowButton} onPress={handlePayNow}>
-          <Text style={styles.payNowButtonText}>Pay Now</Text>
-        </TouchableOpacity>
+        {upcomingEvent && (
+          <TouchableOpacity style={styles.payNowButton} onPress={handlePayNow}>
+            <Text style={styles.payNowButtonText}>Pay Now</Text>
+          </TouchableOpacity>
+        )}
       </View>
       </>
       )}
@@ -80,7 +82,7 @@ const styles = StyleSheet.create({
   },
   eventImage: {
     width: '100%',
-    height: 325,
+    height: 348,
     borderRadius: 8,
     marginBottom: 10,
   },
