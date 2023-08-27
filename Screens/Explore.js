@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native';
 import ScrollableCardList from '../components/ScrollableCardList';
 
-export default function Explore({ navigation }) {
+export default function Explore({ navigation, userEmail }) {
   return (
       <View style={styles.container}>
         <View style={styles.cardListContainer}>
-          <ScrollableCardList navigation={navigation} />
+          <ScrollableCardList navigation={navigation} userEmail={userEmail} />
         </View>
       </View>
   );

@@ -5,6 +5,8 @@ import EventDetailsScreen from './EventDetails';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Icon } from 'react-native-elements';
 import { createStackNavigator } from '@react-navigation/stack';
+import { useNavigation, useRoute } from '@react-navigation/native'; // Import the useNavigation hook
+import BookingsScreen from './BookingsScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -19,14 +21,17 @@ const CustomHeader = () => (
     </View>
 );
 
-const MainAppStack = () => (
+const MainAppStack = ({ userEmail }) => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
-    <Stack.Screen name="Explore" component={Explore} />
+    <Stack.Screen name="Explore">
+      {props => <Explore {...props} userEmail={userEmail} />}
+    </Stack.Screen>
     <Stack.Screen name="EventDetails" component={EventDetailsScreen} />
+    <Stack.Screen name="Bookings" component={BookingsScreen} />
   </Stack.Navigator>
 );
 
-const BottomTabNavigator = () => {
+const BottomTabNavigator = ({ route }) => {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -58,7 +63,7 @@ const BottomTabNavigator = () => {
             <Icon type='feather' name='home' color={'#ffffff'} />
           ),
         }}/>
-      <Tab.Screen name="Explore" component={MainAppStack}
+      <Tab.Screen name="Explore" 
         options={{ 
           headerStyle: {
             backgroundColor: 'white', // Set header background color to white
@@ -69,6 +74,17 @@ const BottomTabNavigator = () => {
           },
           tabBarIcon: (props) => (
             <Icon type='feather' name='compass' color={props.color} />
+          ),
+        }}
+      >
+        {() => <MainAppStack userEmail={route.params.userEmail} />}
+      </Tab.Screen>
+      <Tab.Screen
+        name="Bookings"
+        component={BookingsScreen}
+        options={{
+          tabBarIcon: (props) => (
+            <Icon type='feather' name='calendar' color={props.color} />
           ),
         }}
       />
