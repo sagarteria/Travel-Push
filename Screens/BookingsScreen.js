@@ -149,7 +149,7 @@ const BookingsScreen = () => {
   useEffect(() => {
     // fetchPaymentData(); // Call the API when the component mounts
     // createOrder(); // Call the API when the component mounts
-    createPaymentLink();
+    // createPaymentLink();
     // fetchPaymentLink();
   }, []); // The empty dependency array ensures this effect runs only once
 
@@ -201,10 +201,6 @@ const BookingsScreen = () => {
   ];
 
   return (
-    <>
-     {webviewUrl ? (
-      <WebView source={{ uri: webviewUrl }} />
-    ) : (
     <View style={styles.container}>
       <View style={styles.headerRow}>
         <Text style={styles.headerCellText}>Event Name</Text>
@@ -218,8 +214,6 @@ const BookingsScreen = () => {
         keyExtractor={(item) => item.title}
       />
     </View>
-    )}
-    </>
   );
 };
 
