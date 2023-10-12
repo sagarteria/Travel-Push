@@ -12,5 +12,6 @@ Snack is Open Source. You can find the code on the [GitHub repo](https://github.
 
 # Install the below packages:
 npm install --global expo-cli eas-cli
+eas login
 eas build -p android --profile preview
 wget -O image-name.png "https://drive.google.com/uc?export=download&id=123"
