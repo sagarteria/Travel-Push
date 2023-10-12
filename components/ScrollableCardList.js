@@ -3,7 +3,7 @@ import { View, ScrollView, StyleSheet, Text, TouchableWithoutFeedback, Animated,
 import { Card, Paragraph, Button } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native'; // Import the useNavigation hook
 
-const ScrollableCardList = ({navigation}) => {
+const ScrollableCardList = ({navigation, userEmail}) => {
   const scaleValue = useRef(new Animated.Value(1)).current; // Initialize the scale animation value
 
   const handleButtonPress = (eventData) => {
@@ -17,6 +17,7 @@ const ScrollableCardList = ({navigation}) => {
       description: eventData.description,
       imageUrl: eventData.imageUrl,
       upcomingEvent: eventData.upcomingEvent,
+      userEmail: userEmail,
     });
     // Define the animation sequence
     // Animated.sequence([
@@ -40,31 +41,44 @@ const ScrollableCardList = ({navigation}) => {
   // Dummy data for demonstration purposes. Replace this with your actual data.
   const cardData = [
     {
-      title: 'Osho Anandamayaa',
-      content: 'Freedom Demystified Retreat',
-      date: '12-15 August, 2023',
-      startDate: 'Aug 12, 2023, 11:00 AM',
-      endDate: 'Aug 15, 2023, 12:00 PM',
-      entryFee: 'Rs. 10000',
+      title: 'Osho Anandamaya',
+      content: 'Enlighten Your Inner Soul',
+      date: '28-30 October, 2023',
+      startDate: 'Oct 28, 2023, 11:00 AM',
+      endDate: 'Oct 30, 2023, 12:00 PM',
+      entryFee: '10000',
       location: "Jungle Lore Ganga Beach Retreat, Rishikesh",
-      imageUrl: require('../assets/Retreat-Osho-Anandamaya.jpg'),
-      description: "Osho Anandamaya - Freedom Demystified Retreat. There is no greater ecstasy than to know who you are",
+      imageUrl: require('../assets/Retreat-Osho-Anandamaya-Oct-2023.jpg'),
+      description: "Osho Anandamaya - Enlighten your inner soul. Retreat for attainment of nirvana and enlightenment",
       url: 'eventDetails',
-      upcomingEvent: false
+      upcomingEvent: true
     },
     {
       title: 'World Music Festival',
       content: 'World Music Festival',
       date: '15-16 September, 2023',
       startDate: 'Sept 15, 2023, 4:00 PM',
-      endDate: 'Sept 16, 2023, 11:00 PM',
-      entryFee: 'Rs. 6000',
+      endDate: 'Sept 16, 2023, 10:30 PM',
+      entryFee: '2000',
       location: "Gipsy Cafe, Rishikesh",
       imageUrl: require('../assets/Festival-World-Music-Festival.jpg'),
       description: "One of the biggest music festival about to happen in Rishikesh",
       url: 'eventDetails',
-      upcomingEvent: true
+      upcomingEvent: false
     },
+    {
+      title: 'Osho Anandamaya',
+      content: 'Freedom Demystified Retreat',
+      date: '12-15 August, 2023',
+      startDate: 'Aug 12, 2023, 11:00 AM',
+      endDate: 'Aug 15, 2023, 12:00 PM',
+      entryFee: '10000',
+      location: "Jungle Lore Ganga Beach Retreat, Rishikesh",
+      imageUrl: require('../assets/Retreat-Osho-Anandamaya.jpg'),
+      description: "Osho Anandamaya - Freedom Demystified Retreat. There is no greater ecstasy than to know who you are",
+      url: 'eventDetails',
+      upcomingEvent: false
+    }
     // Add more card objects as needed
   ];
 
