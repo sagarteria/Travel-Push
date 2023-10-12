@@ -64,7 +64,7 @@ const BookingsScreen = () => {
 
       const contactToFilter = '+919876543210'; // Change this to the desired contact number
       const filteredPayments = response.data.items.filter(item => item.contact === contactToFilter);
-      console.log('response--2', response.data, 'filtered', filteredPayments[0].contact)
+      // console.log('response--2', response.data, 'filtered', filteredPayments[0].contact)
       // setPaymentData(response.data.items); // Assuming "items" is the array of payments in the API response
     } catch (error) {
       console.error('Error fetching payment data:', error);
@@ -98,7 +98,7 @@ const BookingsScreen = () => {
 
       const contactToFilter = '+919876543210'; // Change this to the desired contact number
       // const filteredPayments = response.data.items.filter(item => item.contact === contactToFilter);
-      console.log('response--orders--', response.data)
+      // console.log('response--orders--', response.data)
       // setPaymentData(response.data.items); // Assuming "items" is the array of payments in the API response
     } catch (error) {
       console.error('Error fetching payment data:', error);
@@ -118,7 +118,7 @@ const BookingsScreen = () => {
         },
       });
 
-      console.log('response--create payment link--', response.data.short_url)
+      // console.log('response--create payment link--', response.data.short_url)
       // Assuming you have a "url" property in the response containing the URL to open
       setWebviewUrl(response.data.short_url);
     } catch (error) {
@@ -140,7 +140,7 @@ const BookingsScreen = () => {
 
       const contactToFilter = '+919876543210'; // Change this to the desired contact number
       // const filteredPayments = response.data.items.filter(item => item.contact === contactToFilter);
-      console.log('response--orders--', response.data)
+      // console.log('response--orders--', response.data)
       // setPaymentData(response.data.items); // Assuming "items" is the array of payments in the API response
     } catch (error) {
       console.error('Error fetching payment data:', error);

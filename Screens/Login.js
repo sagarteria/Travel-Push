@@ -18,7 +18,7 @@ const LoginPage = ({navigation}) => {
   });
 
   const saveEmailToAirtable = async (email, userName) => {
-    console.log('outside try', email)
+    // console.log('outside try', email)
     try {
       // Check if the email exists in Airtable
       const airtableApiKey = "keySGT1mPfz7drfJo";
@@ -35,14 +35,14 @@ const LoginPage = ({navigation}) => {
       });
 
       const data = await response.json();
-      console.log('airtable data', data);
+      // console.log('airtable data', data);
       
       if (data.error) {
         throw new Error(data.error.message);
       }
 
       const emailExists = data.records.length > 0;
-      console.log('emailExists----', emailExists, data.records.length);
+      // console.log('emailExists----', emailExists, data.records.length);
 
       if (!emailExists) {
         // Save the email to Airtable
@@ -53,7 +53,7 @@ const LoginPage = ({navigation}) => {
             'user-full-name': userName || "",
           },
         };
-        console.log('Inserting New Record:', requestBody);
+        // console.log('Inserting New Record:', requestBody);
 
         const saveResponse = await fetch(saveEmailUrl, {
         method: "POST",
@@ -63,9 +63,9 @@ const LoginPage = ({navigation}) => {
         },
         body: JSON.stringify(requestBody),
       });
-      console.log('Save Email Response:', saveResponse);
+      // console.log('Save Email Response:', saveResponse);
       } else if (userName) {
-        console.log('inside else--')
+        // console.log('inside else--')
         const recordId = data.records[0].id;
         const updateUrl = `https://api.airtable.com/v0/${airtableBaseId}/user-table/${recordId}`;
         const updateBody = {
@@ -73,7 +73,7 @@ const LoginPage = ({navigation}) => {
             'user-full-name': userName,
           },
         };
-        console.log('Updating Record:', updateBody);
+        // console.log('Updating Record:', updateBody);
 
         const updateResponse = await fetch(updateUrl, {
           method: "PATCH",
@@ -83,11 +83,11 @@ const LoginPage = ({navigation}) => {
           },
           body: JSON.stringify(updateBody),
         });
-        console.log('Update Response:', updateResponse);
+        // console.log('Update Response:', updateResponse);
         
       }
     } catch (error) {
-      console.error("Error saving email to Airtable:", error);
+      // console.error("Error saving email to Airtable:", error);
     }
   };
 
@@ -97,16 +97,16 @@ const LoginPage = ({navigation}) => {
 
   async function handleEffect() {
     const user = await getLocalUser();
-    console.log("user--", user);
+    // console.log("user--", user);
     if (!user) {
       if (response?.type === "success") {
-        console.log("user---2", user, response.email);
+        // console.log("user---2", user, response.email);
         // setToken(response.authentication.accessToken);
         getUserInfo(response.authentication.accessToken);
       }
     } else {
       setUserInfo(user);
-      console.log("loaded locally", user.email, user.name);
+      // console.log("loaded locally", user.email, user.name);
       saveEmailToAirtable(user.email, user.name);
       navigation.navigate('MainApp', { userEmail: user.email });
     }
