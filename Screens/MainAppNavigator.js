@@ -2,6 +2,7 @@ import { Text, View, Image } from 'react-native';
 import HomeScreen from './Home';
 import Explore from './Explore';
 import EventDetailsScreen from './EventDetails';
+import PaymentDetailsScreen from './PaymentDetailsScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Icon } from 'react-native-elements';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -27,7 +28,8 @@ const MainAppStack = ({ userEmail }) => (
       {props => <Explore {...props} userEmail={userEmail} />}
     </Stack.Screen>
     <Stack.Screen name="EventDetails" component={EventDetailsScreen} />
-    <Stack.Screen name="Bookings" component={BookingsScreen} />
+    <Stack.Screen name="Bookings"  component={BookingsScreen} />
+    <Stack.Screen name="PaymentDetails"  component={PaymentDetailsScreen} />
   </Stack.Navigator>
 );
 
