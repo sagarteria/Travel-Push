@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, Linking } from 'react-native';
 import { encode } from 'base-64';
 import axios from 'axios';
 import { WebView } from 'react-native-webview';
@@ -40,7 +40,7 @@ const EventDetailsScreen = () => {
 
       const contactToFilter = '+919876543210'; // Change this to the desired contact number
       const filteredPayments = response.data.items.filter(item => item.contact === contactToFilter);
-      console.log('response--2', response.data, 'filtered', filteredPayments[0].contact)
+      // console.log('response--2', response.data, 'filtered', filteredPayments[0].contact)
       // setPaymentData(response.data.items); // Assuming "items" is the array of payments in the API response
     } catch (error) {
       console.error('Error fetching payment data:', error);
@@ -113,14 +113,14 @@ const EventDetailsScreen = () => {
       });
       
       if(response.data.status == "created") {
-        console.log('order created');
+        // console.log('order created');
         // const orderData = generateOrderData(response.data.amount, "INR", response.data.receipt, {
         //   eventTitle: title,
         //   key2: "value2"
         // });
         createPaymentLink(generatePaymentLinkData(entryFee, currency, title, userEmail))
       } else {
-        console.log('order not created');
+        // console.log('order not created');
       }
       // setPaymentData(response.data.items); // Assuming "items" is the array of payments in the API response
     } catch (error) {
@@ -141,7 +141,7 @@ const EventDetailsScreen = () => {
         },
       });
 
-      console.log('response--create payment link--', response.data.short_url)
+      // console.log('response--create payment link--', response.data.short_url)
       // Assuming you have a "url" property in the response containing the URL to open
       setWebviewUrl(response.data.short_url);
     } catch (error) {
@@ -163,7 +163,7 @@ const EventDetailsScreen = () => {
 
       const contactToFilter = '+919876543210'; // Change this to the desired contact number
       // const filteredPayments = response.data.items.filter(item => item.contact === contactToFilter);
-      console.log('response--orders--', response.data)
+      // console.log('response--orders--', response.data)
       // setPaymentData(response.data.items); // Assuming "items" is the array of payments in the API response
     } catch (error) {
       console.error('Error fetching payment data:', error);
@@ -171,9 +171,14 @@ const EventDetailsScreen = () => {
   };
 
   const handlePayNow = () => {
+    navigation.navigate('PaymentDetails');
     // setShowWebView(true);
-    createOrder();
+    // createOrder();
     // createPaymentLink();
+    // Linking.openURL('whatsapp://');
+    // Linking.openURL('gpay://');
+    // Linking.openURL('gpay://travel-push/pay?upi=sagarteria@okhdfcbank&amount=10&currency=INR');
+
   };
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -252,13 +257,13 @@ const styles = StyleSheet.create({
   detailsContainer: {
     backgroundColor: '#fff',
     borderRadius: 8,
-    padding: 16,
+    padding: 12,
     elevation: 4,
   },
   detailRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 4, // Reduced marginBottom for better spacing
+    marginBottom: 2, // Reduced marginBottom for better spacing
   },
   detailTitle: {
     fontSize: 16, // Reduced font size for field labels
@@ -288,7 +293,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingVertical: 12,
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 10,
   },
   payNowButtonText: {
     color: '#fff',
